@@ -1,0 +1,44 @@
+<h1>Juego de Adivinacion de Números Aleatorios - DWEC05 </h1>
+
+<h3>Parámetros de Configuración del Juego</h3>
+
+<label>Nombre:</label><br>
+<input type="text" [(ngModel)]="this.nombre" required><br><br>
+
+<label>Apellido:</label><br>
+<input type="text" [(ngModel)]="this.apellido" required><br><br>
+
+<label>Rango de números a generar:</label><br>
+<input type="number" [(ngModel)]="this.rango" required><br><br>
+
+<label>Número de intentos:</label><br>
+<input type="number" [(ngModel)]="this.intentos" required><br>
+
+<br><br>
+<button (click)="iniciarJuego()">Recoger Datos</button>
+
+<div *ngIf="mostrarTexto">
+    <h2>Ongi Etorri {{ nombre }} {{ apellido }}</h2><br>
+    <label>Introduce el Número a Adivinar</label><br>
+    <input type="text" [(ngModel)]="this.test"><br><br>
+
+    <label>Intentos Restantes {{ intentos }}</label><br><br>
+
+    <section [ngSwitch]="this.acierto">
+        <p *ngSwitchCase="'si'"> ¿Has Adivinado?: SI </p>
+        <p *ngSwitchCase="'no'"> ¿Has Adivinado?: NO </p>
+    </section>
+
+    <button (click)="intentar(numeroAleatorio, this.test, this.rango)">Enviar</button>
+
+</div>
+
+<div *ngIf="mostrarResultados">
+    <h3>Intentos acabados</h3>
+    <ul>
+        <li *ngFor="let x of listaIntentos">
+            {{x}}
+        </li>
+    </ul>
+
+</div>
